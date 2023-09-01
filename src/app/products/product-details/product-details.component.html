@@ -1,0 +1,32 @@
+<div class="card flex flex-row items-center justify-center h-[80vh]" *ngIf="isLoading">
+    <nz-skeleton-element *nzSpaceItem nzType="avatar" [nzActive]="isLoading" [nzSize]="20" [nzShape]="'circle'"></nz-skeleton-element>
+    <nz-skeleton [nzAvatar]="false" [nzParagraph]="{ rows: 4 }"></nz-skeleton>
+</div>
+
+
+<div nz-row class="h-[80vh]" [nzGutter]="[32]">
+    <!-- Image -->
+    <div nz-col nzXs="24" nzSm="24" nzMd="10" nzLg="12" nzXl="12">
+        <img height="400px" [src]="productInfo.images[2]" alt="productInfo.name" class="rounded-md w-full" />
+        <br />
+        <div class="flex flex-row gap-5 overflow-auto">
+
+            <img *ngFor="let image of productInfo.images; let i = index" [src]="image" class="w-24 h-24 rounded-md" />
+        </div>
+    </div>
+    <!-- Details Info -->
+    <div nz-col nzXs="24" nzSm="24" nzMd="14" nzLg="12" nzXl="12" class="flex flex-col gap-3">
+        <div class="flex flex-row items-end justify-start gap-5">
+            <h1 class="font-bold text-2xl m-0">{{productInfo.title}}</h1>
+            <nz-tag [nzColor]="'cyan'">{{productInfo.category.name}}</nz-tag>
+        </div>
+        <p class="font-normal text-base">{{productInfo.description}}</p>
+        <div class="flex flex-row justify-start gap-3 items-center w-full">
+            <button nz-button nzType="primary" nzSize="large" class="rounded-md" [routerLink]="['/products']">Home</button>
+            <button nz-button nzType="primary" nzSize="large" class="rounded-md">
+                <span nz-icon nzType="shopping-cart" nzTheme="outline" class="z-20 text-[1.5rem] text-black"></span>
+                Add to cart
+            </button>
+        </div>
+    </div>
+</div>

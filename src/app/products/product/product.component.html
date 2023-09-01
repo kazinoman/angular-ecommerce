@@ -1,0 +1,17 @@
+<div class="w-[24rem] max-w-md flex flex-col items-center justify-center gap-3 border-[1px] rounded-lg shadow-md p-4 hover:scale-105 transition ease-in duration-300 ">
+    <img nz-image class="w-full h-[18rem] rounded-md" [nzSrc]="images[1]" alt="" *ngIf="images[0]" />
+    <div class="flex flex-row items-center justify-between w-full">
+        <h1 class="text-slate-500 font-medium text-lg">{{ name }}</h1>
+        <h1>{{ price | currency : "BDT" }}</h1>
+    </div>
+    <div class="h-20">
+        <p class="text-slate-500 font-light text-base">{{ description }}</p>
+    </div>
+    <div class="flex flex-row justify-start gap-3 items-center w-full">
+        <button nz-button nzType="primary" nzSize="large" class="rounded-md" [routerLink]="['/products',id]">Details</button>
+        <button nz-button nzType="primary" nzSize="large" class="rounded-md">
+            <span nz-icon nzType="shopping-cart" nzTheme="outline" class="z-20 text-[1.5rem] text-black"></span>
+            Add to cart
+        </button>
+    </div>
+</div>
