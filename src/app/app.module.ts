@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Icons Related
 import { IconDefinition } from '@ant-design/icons-angular';
@@ -25,6 +27,8 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { CartService } from './carts/service/cart.service';
+import { AdditionModule } from './addition/addition.module';
 
 @NgModule({
   declarations: [
@@ -37,14 +41,17 @@ import { FooterComponent } from './shared/footer/footer.component';
     BrowserModule,
     BrowserAnimationsModule,
     NzIconModule.forRoot(icons),
+    NzBadgeModule,
     AntDComponentModule,
     HttpClientModule,
+
     ProductsModule,
     UsersModule,
     CartsModule,
+    AdditionModule,
     AppRoutingModule,
   ],
-  providers: [{ provide: NZ_ICONS, useValue: icons }],
+  providers: [{ provide: NZ_ICONS, useValue: icons }, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

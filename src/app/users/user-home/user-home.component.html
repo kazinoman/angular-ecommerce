@@ -1,1 +1,34 @@
-<p>user-home works!</p>
+<div class="my-5">
+    <nz-table #basicTable [nzData]="userList">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Created On</th>
+                <th>Profile Picture</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let data of basicTable.data">
+            <tr>
+                <td>{{data.name}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.role}}</td>
+                <td>{{data.creationAt | date}}</td>
+                <td><img nz-image [nzSrc]="data.avatar" nzZoom="10" class="h-20 w-20 rounded-md" /></td>
+                <td>
+                    <a>Update</a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a>Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+
+    <nz-skeleton [nzLoading]="isLoading"></nz-skeleton>
+    <nz-skeleton [nzLoading]="isLoading"></nz-skeleton>
+    <nz-skeleton [nzLoading]="isLoading"></nz-skeleton>
+    <nz-skeleton [nzLoading]="isLoading"></nz-skeleton>
+    <nz-skeleton [nzLoading]="isLoading"></nz-skeleton>
+</div>

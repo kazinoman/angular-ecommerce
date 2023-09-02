@@ -14,6 +14,7 @@ import { ProductsHomeComponent } from './products-home/products-home.component';
 import { ProductComponent } from './product/product.component';
 import { ProductsService } from './services/products.service';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CartService } from '../carts/service/cart.service';
 
 @NgModule({
   declarations: [

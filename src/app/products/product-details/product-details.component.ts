@@ -34,7 +34,6 @@ export class ProductDetailsComponent {
     this.productService
       .getProduct(parseInt(this.product.id))
       .subscribe((data: IProducts) => {
-        console.log(data);
         this.productInfo = data;
         this.isLoading = false;
       });

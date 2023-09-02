@@ -1,7 +1,8 @@
-import { ProductsService } from './../services/products.service';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/carts/service/cart.service';
+import { ICategory } from '../type/products.type';
 
 @Component({
   selector: 'app-product',
@@ -16,11 +17,11 @@ export class ProductComponent implements OnInit, OnDestroy {
   @Input() description: string;
   @Input() price: number = 0;
   @Input() id: number = 0;
+  @Input() category: ICategory;
+  @Input() creationAt: Date;
+  @Input() updateAt: Date;
 
-  constructor(
-    private route: ActivatedRoute,
-    private productService: ProductsService
-  ) {
+  constructor(private route: ActivatedRoute, private cartService: CartService) {
     this.name = '';
     this.images = [];
   }
@@ -32,19 +33,24 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.paramsSubscriptions = this.route.params.subscribe((params: Params) => {
       this.product.id = params['id'];
     });
-    console.log(this.images[0], this.price);
   }
 
-  ngOnChange() {
-    console.log(this.images, this.price);
-  }
-
-  productDetais() {}
-
-  getProduct() {
-    this.productService.getProduct(this.id).subscribe((data) => {
-      console.log(data);
+  addToCart() {
+    this.cartService.addtoCarts({
+      title: this.name,
+      description: this.description,
+      category: {
+        name: this.category.name,
+        id: this.category.id,
+        image: this.category.image,
+      },
+      price: this.price,
+      id: this.id,
+      images: this.images,
+      creationAt: this.creationAt,
+      updatedAt: this.updateAt,
     });
+    this.cartService.cartUpdate.emit(this.cartService.carts.length);
   }
 
   ngOnDestroy(): void {

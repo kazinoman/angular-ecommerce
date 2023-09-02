@@ -1,16 +1,19 @@
 export interface IProducts {
   id: number;
-  createdOn: Date;
+  creationAt: Date;
+  updatedAt: Date;
   description: string;
   price: number;
   title: string;
   images: string[];
-  category: {
-    id: number;
-    image: string;
-    name: string;
-    updateAt: Date;
-    creationAt: Date;
-  };
-  length: number;
+  category: ICategory;
+  length?: number;
+}
+
+export interface ICategory {
+  id: number;
+  image: string;
+  name: string;
+  updateAt?: Date;
+  creationAt?: Date;
 }

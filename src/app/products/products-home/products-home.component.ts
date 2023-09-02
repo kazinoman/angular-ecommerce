@@ -7,7 +7,6 @@ import { map } from 'rxjs';
   selector: 'app-products-home',
   templateUrl: './products-home.component.html',
   styleUrls: ['./products-home.component.css'],
-  providers: [ProductsService],
 })
 export class ProductsHomeComponent implements OnInit {
   products: IProducts[] = [];
@@ -17,7 +16,7 @@ export class ProductsHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
-    console.log(this.products);
+    // console.log(this.products);
   }
 
   getAllProducts() {

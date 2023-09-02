@@ -1,12 +1,45 @@
-<header class="flex flex-row items-center justify-between gap-5 p-5 border-[1px] border-black rounded-lg">
-    <div id="logo"></div>
-    <div class="flex flex-row items-center justify-center gap-5">
-        <h1 routerLink="products" routerLinkActive="font-bold" class="text-lg">Products</h1>
-        <h1 routerLink="users" routerLinkActive="font-bold" class="text-lg">Users</h1>
-    </div>
-    <div>
-        <button nz-button nzType="primary" nzShape="circle" class="bg-slate-200 w-10 h-10 text-center border-[0px]" routerLink="carts">
-            <span nz-icon nzType="shopping-cart" class="z-20 text-[1.5rem] text-black"></span>
-        </button>
-    </div>
+<header
+  class="flex flex-row items-center justify-between gap-5 p-5 border-[1px] border-black rounded-lg sticky top-0 bg-white z-50 bottom-10"
+>
+  <div id="logo"></div>
+  <div class="flex flex-row items-center justify-center gap-5">
+    <h1
+      routerLink="products"
+      routerLinkActive="font-bold"
+      class="text-lg cursor-pointer"
+    >
+      Products
+    </h1>
+    <h1
+      routerLink="users"
+      routerLinkActive="font-bold"
+      class="text-lg cursor-pointer"
+    >
+      Users
+    </h1>
+    <h1
+      routerLink="addition"
+      routerLinkActive="font-bold"
+      class="text-lg cursor-pointer"
+    >
+      Addition
+    </h1>
+  </div>
+  <div>
+    <nz-badge [nzCount]="cartItem">
+      <button
+        nz-button
+        nzType="primary"
+        nzShape="circle"
+        class="bg-slate-200 w-10 h-10 text-center border-[0px]"
+        routerLink="carts"
+      >
+        <span
+          nz-icon
+          nzType="shopping-cart"
+          class="z-20 text-[1.5rem] text-black"
+        ></span>
+      </button>
+    </nz-badge>
+  </div>
 </header>

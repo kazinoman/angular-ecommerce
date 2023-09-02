@@ -1,6 +1,6 @@
 <div class="flex flex-row items-start justify-center lg:justify-between gap-5 flex-wrap">
-    <app-product *ngFor="let product of products" [name]="product.title" [images]="product.images" [id]="product.id" [description]="product.description"
-        [price]="product.price"></app-product>
+    <app-product *ngFor="let product of products" [name]="product.title" [images]="product.images" [id]="product.id" [description]="product.description" [price]="product.price"
+        [category]="product.category" [creationAt]="product.creationAt" [updateAt]="product.updatedAt"></app-product>
 </div>
 
 <div class="card flex flex-row items-center justify-center" *ngIf="isLoading">
