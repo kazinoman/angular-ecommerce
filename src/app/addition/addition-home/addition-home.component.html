@@ -3,22 +3,41 @@
 >
   <div class="border-[1px] border-[#e2e2e2] p-5 w-[50%] sm:w-full rounded-lg">
     <h1 class="font-semibold text-lg">Add Product</h1>
-    <form class="flex flex-col gap-5">
-      <input nz-input placeholder="Name" />
+    <form
+      class="flex flex-col gap-5"
+      [formGroup]="productForm"
+      (ngSubmit)="handleProductForm()"
+    >
+      <input nz-input placeholder="Name" formControlName="title" />
       <div class="flex flex-row gap-5">
-        <input nz-input placeholder="Price" class="w-[50%]" />
-        <nz-select class="w-[50%]">
-          <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-          <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+        <input
+          nz-input
+          placeholder="Price"
+          class="w-[50%]"
+          formControlName="price"
+        />
+
+        <nz-select class="w-[50%]" formControlName="categoryId">
           <nz-option
             nzValue="disabled"
-            nzLabel="Disabled"
+            nzLabel="Select Category"
             nzDisabled
+          ></nz-option>
+          <nz-option
+            *ngFor="let item of category; let id = index"
+            nzLabel="{{ item.name }}"
+            nzValue="{{ item.id }}"
           ></nz-option>
         </nz-select>
       </div>
       <nz-textarea-count [nzMaxCharacterCount]="100">
-        <textarea rows="4" nz-input placeholder="Description"></textarea>
+        <textarea
+          rows="4"
+          nz-input
+          placeholder="Description"
+          class="rounded-md"
+          formControlName="description"
+        ></textarea>
       </nz-textarea-count>
       <button nz-button nzType="primary" type="submit">Submit</button>
     </form>
@@ -41,7 +60,12 @@
         </nz-select>
       </div>
       <nz-textarea-count [nzMaxCharacterCount]="100">
-        <textarea rows="4" nz-input placeholder="Description"></textarea>
+        <textarea
+          rows="4"
+          nz-input
+          placeholder="Description"
+          class="rounded-md"
+        ></textarea>
       </nz-textarea-count>
       <button nz-button nzType="primary">Submit</button>
     </div>

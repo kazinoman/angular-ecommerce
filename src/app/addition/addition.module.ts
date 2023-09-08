@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdditionRoutingModule } from './addition-routing.module';
 import { AdditionHomeComponent } from './addition-home/addition-home.component';
+import { AdditionService } from './service/addition.service';
 
 @NgModule({
   declarations: [AdditionHomeComponent],
@@ -20,5 +21,6 @@ import { AdditionHomeComponent } from './addition-home/addition-home.component';
     NzButtonModule,
     ReactiveFormsModule,
   ],
+  providers: [AdditionService],
 })
 export class AdditionModule {}
